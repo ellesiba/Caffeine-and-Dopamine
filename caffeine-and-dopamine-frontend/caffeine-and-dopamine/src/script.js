@@ -16,7 +16,7 @@ let script = [
     bgm: chill,
     sprite: bn,
     speaker: box,
-    text: "Testing...123..."
+    text: "The blue glow of the computer screen illuminates my darkened room. I feel like I've been staring at the same unfinished sentence for what seems like hours.",
   }
 ];
 
