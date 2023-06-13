@@ -62,8 +62,6 @@ class Settings extends Component {
       changeFont,
       bgmVolume,
       bgmVolumeChange,
-      soundEffectVolume,
-      soundEffectVolumeChange,
       toggleSettings
     } = this.props;
     const options = [ //Fonts
@@ -104,9 +102,6 @@ class Settings extends Component {
           <li>
             <a>Settings</a>
           </li>
-          <li className="exit-button" onClick={toggleSettings}>
-            <a>&times;</a>
-          </li>
         </ul>
         <ul>
           {this.category("Audio", audioShown, this.toggleAudio)}
@@ -116,7 +111,6 @@ class Settings extends Component {
           {audioShown ? (
             <div>
               {this.slider("BGM", bgmVolume, bgmVolumeChange)}
-              {this.slider("Sound Effect", soundEffectVolume, soundEffectVolumeChange)}
             </div>
           ) : null}
           {textShown ? (

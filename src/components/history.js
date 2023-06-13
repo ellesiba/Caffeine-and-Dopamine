@@ -33,9 +33,6 @@ class History extends Component {
 
       textHistory.push(
         <div className="history" key={i}>
-          <div className="history-jump-container" onClick={() => this.handleJump(index, i, choicesIndex)}>
-            <span className="history-jump-text">Jump</span>
-          </div>
           <div className="history-speaker">{script[index].speaker}</div>
           {script[index].text}
         </div>

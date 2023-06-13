@@ -4,7 +4,6 @@ function Title(props) {
   return (
     <div className="overlay" id="title-overlay">
       <div id="title-screen-header">
-        <div id="logo">Caffeine and Dopamine</div>
         <ul id="menu">
           <li>
             <span onClick={props.beginStory}>Start</span>

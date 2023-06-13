@@ -14,7 +14,19 @@ import MenuButtons from "./components/menuButtons";
 import SaveLoadMenu from "./components/saveLoadMenu";
 import SecretMenu from "./components/secretmenu";
 
+//Styling
 import "./styling/app.css"
+import "./styling/settings.css";
+import "./styling/container.css";
+import "./styling/history.css";
+import "./styling/choices-overlay.css";
+import "./styling/effects.css";
+import "./styling/menu-buttons.css";
+import "./styling/save-load.css";
+import "./styling/sprites.css";
+import "./styling/textbox.css";
+import "./styling/titlescreen.css";
+import "./styling/transition.css";
 
 //Story Components
 import script from "./script";
@@ -22,7 +34,6 @@ import choices from "./choices";
 
 const INITIAL_STATE = {
   bgmVolume: 50,
-  soundEffectVolume: 60,
   font: "Balsamiq Sans",
   isFull: false,
   choicesStore: {},
@@ -134,7 +145,6 @@ class App extends Component {
       bg: script[index].bg,
       bgm: script[index].bgm,
       choicesExist: script[index].choicesExist,
-      soundEffect: script[index].soundEffect,
       speaker: script[index].speaker,
       sprite: script[index].sprite,
       spriteEffect: script[index].spriteEffect,
@@ -343,9 +353,7 @@ class App extends Component {
         changeFont={newFont => this.setState({ font: newFont.label })}
         font={this.state.font}
         bgmVolume={this.state.bgmVolume}
-        soundEffectVolume={this.state.soundEffectVolume}
         bgmVolumeChange={value => this.setState({ bgmVolume: value })}
-        soundEffectVolumeChange={value => this.setState({ soundEffectVolume: value })}
         toggleSettingsMenu={this.toggleSettingsMenu.bind(this)}
       />
     );
@@ -366,7 +374,7 @@ class App extends Component {
         choiceOptions={this.state.choiceOptions}
         confirmationMessage="Overwrite save?"
         currentTime={this.state.currentTime}
-        menuType="Save"
+        menuType=""
         executeSlot={this.saveSlot.bind(this)}
         toggleMenu={this.toggleSaveMenu.bind(this)}
         speaker={this.state.speaker}
@@ -383,7 +391,7 @@ class App extends Component {
         choiceOptions={this.state.choiceOptions}
         confirmationMessage="Load save?"
         currentTime={this.state.currentTime}
-        menuType="Load"
+        menuType=""
         executeSlot={this.loadSlot.bind(this)}
         toggleMenu={this.toggleLoadMenu.bind(this)}
         speaker={this.state.speaker}
@@ -447,11 +455,6 @@ class App extends Component {
   playBGM() {
     return <Sound url={this.state.bgm} volume={this.state.bgmVolume} playStatus={Sound.status.PLAYING} loop={true} />;
   }
-  playSoundEffect() {
-    return (
-      <Sound url={this.state.soundEffect} volume={this.state.soundEffectVolume} playStatus={Sound.status.PLAYING} />
-    );
-  }
 
   render() {
     let zoomMultiplier = 0;
@@ -483,10 +486,10 @@ class App extends Component {
           </ReactCSSTransitionGroup>
         {!this.state.titleShown ? this.renderMenuButtons() : null}
         {this.state.bgm ? this.playBGM() : null}
-        {this.state.soundEffect ? this.playSoundEffect() : null}
       </div>
     );
   }
+  
 }
 
 export default App;

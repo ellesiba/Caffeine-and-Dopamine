@@ -101,7 +101,6 @@ class SaveLoadMenu extends Component {
   deleteSavedFile() {
     if (window.confirm("Are you sure you want to delete this saved file?")) {
       localStorage.removeItem(this.state.slotNumber);
-      // Add any additional cleanup or UI updates here
     }
   }
 
@@ -120,7 +119,6 @@ class SaveLoadMenu extends Component {
           </li>
         </ul>
         {this.menuSlot()}
-        <div className="slot-date">{localStorage.getItem("time" + this.state.slotNumber)}</div>
         {this.swapSlotButtons()}
       </div>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 
-function ChoicesMenu(props) {
+
+function choicesMenu(props) {
   function renderChoiceOptions(key) {
     return (
       <input
@@ -16,8 +17,10 @@ function ChoicesMenu(props) {
       />
     );
   }
+  // return <div className="overlay overlay-choices">{props.choiceOptions.map(renderChoiceOptions)}</div>;
+  // return <div className="overlay overlay-choices">{props.choiceOptions && props.choiceOptions.map(renderChoiceOptions)}</div>;
 
-  return <div className="overlay overlay-choices">{props.choiceOptions.map(renderChoiceOptions)}</div>;
+
 }
 
-export default ChoicesMenu;
+export default choicesMenu;

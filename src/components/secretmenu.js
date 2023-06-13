@@ -1,5 +1,6 @@
 //Imports
 import React, { Component } from "react";
+import "../styling/secretMenu.css" 
 
 class SecretMenu extends Component {
   
@@ -19,9 +20,10 @@ class SecretMenu extends Component {
       <div className="overlay" id="secret-menu-overlay" >
         <ul className="header">
           <li>
-            <a>Secret Menu Is Appearing!</a>
+            <a>Secret Menu</a>
           </li>
         </ul>
+        <a>more words that is not header</a>
       </div>
     );
   }

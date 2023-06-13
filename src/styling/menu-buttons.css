@@ -1,0 +1,60 @@
+.menu-buttons-container {
+    z-index: -1;
+    overflow: visible;
+  }
+  
+  .menu-buttons {
+    position: relative;
+    top: 740px;
+    width: 100%;
+    float: left;
+    padding-bottom: 10px;
+  }
+  
+  .menu-buttons button {
+    border: solid 3px #833b1c; 
+    background-color: #833b1ce2;
+    align-self: center;
+    padding: 14px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    color: #dbcbbcca;
+    font-size: 24px;
+    letter-spacing: 1px;
+    outline: none;
+    border-radius: 200px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .menu-buttons button:hover {
+    background-color: #cc9882;
+    -webkit-box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 8px 4px -6px #4b2c1c;
+    color: #4b2c1c; /* same as bg color */
+    border: solid 2px #41403e;
+  }
+  
+  @media only screen and (max-width: 1100px) {
+    .menu-buttons button {
+      font-size: 18px;
+      padding: 8px;
+      margin-right: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .menu-buttons button {
+      float: none;
+      font-size: 16px;
+      padding: 6px;
+      margin-top: 10px;
+    }
+  }
+  
+  .menu-buttons button:last-child {
+    margin-right: 0; /* for symmetry; prevents rightmost button margin*/
+  }
+  
+  

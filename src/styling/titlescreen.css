@@ -1,0 +1,140 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+  #title-overlay {
+  background: #432c22
+    url(https://imgur.com/3KfXGuf.png);
+}
+
+#title-screen-header {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  width: 100%;
+}
+
+#menu {
+  width: 100%;
+  height: 42px;
+  list-style: none;
+  margin: -18px 0px 0px 0;
+  padding: 20px 0;
+  position: relative;
+  text-align: center;
+}
+#menu li {
+  cursor: pointer;
+  display: inline-block;
+  width: 303px;
+  margin: 0px 100px 0px;
+  position: relative;
+  -webkit-transform: skewy(-3deg);
+  -webkit-backface-visibility: hidden;
+  /* -webkit-transition: 200ms all; */
+}
+#menu li span {
+  font-family: "Yeseva One", cursive;
+  font-weight: 800;
+  display: block;
+  background: #d3beb5;
+  padding: 6px 0;
+  color: #6a5447;
+  font-size: 45px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  background-size: 4px 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+    0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #6a54476d inset;
+}
+#menu li:hover {
+  width: 320px;
+}
+#menu span:hover {
+  color: #493420;
+}
+#menu li:after,
+#menu li:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  background: #bbb;
+  -webkit-transform: skewY(8deg);
+  x-index: -3;
+  border-radius: 4px;
+}
+#menu li:after {
+  /* background-image: -webkit-linear-gradient(
+    left,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  ); */
+  right: 0;
+  top: -4px;
+}
+#menu li:before {
+  left: 0;
+  bottom: -4px;
+  /* background-image: -webkit-linear-gradient(
+    right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  ); */
+}
+
+/* Changing for smaller screens */
+
+@media only screen and (max-width: 1000px) {
+  #logo {
+    font-size: 80px;
+  }
+
+  #menu {
+    padding: 28px 0 17px;
+  }
+
+  #menu li {
+    width: 30%;
+  }
+  #menu li:hover {
+    width: 32%;
+  }
+
+  #menu li span {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  #menu li:after,
+  #menu li:before {
+    content: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #logo {
+    font-size: 60px;
+  }
+
+  #menu {
+    padding: 35px 0 125px;
+  }
+
+  #menu li {
+    width: 70%;
+  }
+  #menu li:hover {
+    width: 75%;
+  }
+
+  #menu li span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+}

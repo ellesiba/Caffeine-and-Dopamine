@@ -2,3 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Comic+Neue&family=Gochi+Hand&family=Indie+Flower&family=Nanum+Pen+Script&family=Patrick+Hand+SC&family=Sue+Ellen+Francisco&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Balsamiq+Sans&family=Chewy&family=Poiret+One&family=Pompiere&family=Silkscreen&family=Unica+One&family=Yeseva+One&display=swap');
 
+#settings-overlay {
+	display: flex;
+	flex-flow: column;
+	z-index: 5;
+	color: #bc9883;
+}
+
+
+#settings-overlay > ul {
+	list-style-type: none;
+	margin: 0 0 15px 0;
+	padding: 0;
+	text-align: center;
+}
+
+.settings-container {
+	margin: 15px 30px;
+	border-radius: 5px;
+	background: rgba(134, 96, 96, 0.256);
+	width: 375px;
+}
+
+@media only screen and (max-width: 768px) {
+	.settings-container {
+		width: 70%;
+		margin: 15px auto;
+	}
+}
+.slider-container {
+	padding: 8px 12px 2px;
+}
+
+.font-container {
+	padding: 6px 12px;
+	line-height: 1.6;
+}

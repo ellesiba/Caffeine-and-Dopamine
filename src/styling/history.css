@@ -1,0 +1,41 @@
+.history-overlay {
+    overflow: auto;
+    margin: auto;
+    z-index: 6;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #97745b;
+  }
+  
+  .history {
+    box-sizing: border-box;
+    background-color: #dacfc7;
+    background-image: linear-gradient(90deg, transparent 79px, #4c2c25 79px, #4c2c25 81px, transparent 81px),
+      linear-gradient(#ddddddcd 2px, transparent 2px);
+    background-size: 100% 33.33%;
+    font-size: 22px;
+    width: 90%;
+    margin: auto;
+    height: 104px;
+    padding-top: 3px;
+    line-height: 1.52;
+    padding-left: 93px;
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    .history {
+      background-image: linear-gradient(90deg, transparent 50px, #4c2c25 50px, #4c2c25 52px, transparent 52px),
+        linear-gradient(#ddd 2px, transparent 2px); /* shifts blue line margin to left */
+      padding-left: 59px;
+      font-size: 18px;
+      padding-top: 2px;
+      line-height: 1.45;
+      background-size: 100% 25%;
+    }
+  }
+  
+  .history-speaker {
+    font-weight: 500;
+    color: rgb(72, 29, 8);
+  }
+  
