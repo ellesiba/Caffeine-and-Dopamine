@@ -30,3 +30,4 @@ class SecretMenu extends Component {
 }
 
 export default SecretMenu;
+

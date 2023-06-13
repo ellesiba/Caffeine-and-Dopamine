@@ -28,9 +28,12 @@ import "./styling/textbox.css";
 import "./styling/titlescreen.css";
 import "./styling/transition.css";
 
+
 //Story Components
 import script from "./script";
 import choices from "./choices";
+
+
 
 const INITIAL_STATE = {
   bgmVolume: 50,
