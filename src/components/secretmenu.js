@@ -1,92 +1,3 @@
-// import React, { Component } from "react";
-// import "../styling/secretMenu.css";
-
-// class SecretMenu extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       menuItems: [],
-//       selectedDrink: null,
-//     };
-//   }
-
-//   componentDidMount() {
-//     this.fetchMenuItems();
-//   }
-
-//   fetchMenuItems() {
-//     fetch("http://localhost:8000/api/v1/secret_menu")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data.status.code === 200) {
-//           this.setState({ menuItems: data.data });
-//         } else {
-//           console.log("Error fetching menu items:", data.status.message);
-//         }
-//       })
-//       .catch((error) => {
-//         console.log("Error fetching menu items:", error);
-//       });
-//   }
-
-//   deleteMenuItem(itemId) {
-//     // Send a DELETE request to your API endpoint to delete the menu item with the given itemId
-//     // Update the state accordingly after successful deletion
-//   }
-
-//   createMenuItem() {
-//     // Show a form or a modal to allow the user to enter details for a new menu item
-//     // Send a POST request to your API endpoint with the new menu item data
-//     // Update the state with the newly created menu item after successful creation
-//   }
-
-//   editMenuItem(itemId) {
-//     // Show a form or a modal prefilled with the details of the menu item with the given itemId
-//     // Allow the user to edit the details and send a PUT/PATCH request to your API endpoint
-//     // Update the state with the edited menu item after successful update
-//   }
-
-//   selectDrink(drink) {
-//     this.setState({ selectedDrink: drink });
-//   }
-
-//   render() {
-//     const { menuItems, selectedDrink } = this.state;
-
-//     return (
-//       <div className="overlay" id="secret-menu-overlay">
-//         <ul className="header">
-//           <li>
-//             <a>Secret Menu</a>
-//           </li>
-//         </ul>
-//         {menuItems.map((menuItem) => (
-//           <div key={menuItem.id}>
-//             <span onClick={() => this.selectDrink(menuItem)}>
-//               {menuItem.name}
-//             </span>
-//             <button onClick={() => this.editMenuItem(menuItem.id)}>Edit</button>
-//             <button onClick={() => this.deleteMenuItem(menuItem.id)}>Delete</button>
-//           </div>
-//         ))}
-//         <button onClick={() => this.createMenuItem()}>Create New</button>
-//         {selectedDrink && (
-//           <div>
-//             <h2>{selectedDrink.name}</h2>
-//             <p>Coffee: {selectedDrink.coffee ? "Yes" : "No"}</p>
-//             <p>Tea: {selectedDrink.tea ? "Yes" : "No"}</p>
-//             <p>Milk: {selectedDrink.milk ? "Yes" : "No"}</p>
-//             <p>Additional Flavors: {selectedDrink.additional_flavors}</p>
-//             <p>Taste Profile: {selectedDrink.taste_profile}</p>
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
-// }
-
-// export default SecretMenu;
-
 import React, { Component } from "react";
 import "../styling/secretMenu.css";
 
@@ -205,12 +116,6 @@ class SecretMenu extends Component {
     }));
   }
   
-  // handleChangeEditedDrink(event) {
-  //   const { name, value } = event.target;
-  //   this.setState((prevState) => ({
-  //     editedDrink: { ...prevState.editedDrink, [name]: value },
-  //   }));
-  // }
   handleChangeEditedDrink(event) {
     const { name, value, type, checked } = event.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -419,7 +324,6 @@ class SecretMenu extends Component {
               onChange={(event) => this.handleChangeEditedDrink(event)}
             />
           </label>
-          {/* Add other input fields for coffee, tea, milk, additional flavors, taste profile */}
           <label>
             Coffee:
             <input
