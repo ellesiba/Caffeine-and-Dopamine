@@ -17,6 +17,8 @@ function MenuButtons(props) {
         <button onClick={props.toggleLoadMenu}>{props.loadMenuShown ? "Hide Loads" : "Load"}</button>
         <button onClick={props.toggleSettingsMenu}>{props.SettingsShown ? "Hide Settings" : "Settings"}</button>
         <button onClick={props.toggleSecretMenu}>{props.SecretMenuShown ? "Hide SecretMenu" : "Secret Menu"}</button>
+        <button onClick={props.toggleLoginMenu}>{props.LoginMenuShown ? "Hide Login" : "Login"}</button>
+        
       </div>
     </div>
   );

@@ -1,0 +1,6 @@
+#login-overlay {
+	display: flex;
+	flex-flow: column;
+	z-index: 7;
+	color: #bc9883;
+  }

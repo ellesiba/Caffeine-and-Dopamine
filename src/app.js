@@ -13,6 +13,7 @@ import Frame from "./components/frame";
 import MenuButtons from "./components/menuButtons";
 import SaveLoadMenu from "./components/saveLoadMenu";
 import SecretMenu from "./components/secretmenu";
+import Login from "./components/login";
 
 //Styling
 import "./styling/app.css"
@@ -27,6 +28,7 @@ import "./styling/sprites.css";
 import "./styling/textbox.css";
 import "./styling/titlescreen.css";
 import "./styling/transition.css";
+import "./styling/login.css"
 
 
 //Story Components
@@ -47,7 +49,8 @@ const INITIAL_STATE = {
   indexHistory: [],
   choicesExist: false,
   settingsShown: false,
-  secretShown: false,
+  secretMenuShown: false,
+  loginShown: false,
   titleShown: true,
   frameIsRendering: false,
   historyShown: false,
@@ -72,7 +75,8 @@ class App extends Component {
           !this.state.saveMenuShown &&
           !this.state.titleShown &&
           !this.state.settingsMenuShown &&
-          !this.state.secretMenuShown
+          !this.state.secretMenuShown &&
+          !this.state.loginMenuShown       
         ) {
           this.toggleHistory();
         }
@@ -131,7 +135,8 @@ class App extends Component {
       !this.state.titleShown &&
       !this.state.historyShown &&
       !this.state.settingsMenuShown &&
-      !this.state.secretMenuShown
+      !this.state.secretMenuShown &&
+      !this.state.loginMenuShown
     ) {
       this.setFrame(currentIndex + 1);
     }
@@ -220,6 +225,9 @@ class App extends Component {
   }
 
   toggleSettingsMenu() {
+    if (this.state.loginShown) {
+      this.setState({ loginMenuShown: false });
+    }
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }
@@ -235,6 +243,12 @@ class App extends Component {
   }
 
   toggleSecretMenu() {
+    if (this.state.loginShown) {
+      this.setState({ loginMenuShown: false });
+    }
+    if (this.state.loginShown) {
+      this.setState({ loginShown: false });
+    }
     if (this.state.saveMenuShown) {
       this.setState({ saveMenuShown: false });
     }
@@ -249,7 +263,33 @@ class App extends Component {
     }));
   }
 
+  toggleLoginMenu() {
+    console.log("Login Pressed")
+    if (this.state.saveMenuShown) {
+      this.setState({ saveMenuShown: false });
+    }
+    if (this.state.settingsMenuShown) {
+      this.setState({ settingsMenuShown: false });
+    }
+    if (this.state.secretMenuShown) {
+      this.setState({ secretMenuShown: false });
+    }
+    if (this.state.loadMenuShown) {
+      this.setState({ loadMenuShown: false });
+    }
+    if (this.state.historyShown) {
+      this.setState({ historyShown: false });
+    }
+    this.setState(prevState => ({
+      loginMenuShown: !prevState.loginMenuShown,
+    }));
+  }
+
+
   toggleHistory() {
+    if (this.state.loginMenuShown) {
+      this.setState({ loginMenuShown: false });
+    }
     if (this.state.settingsMenuShown) {
       this.setState({ settingsMenuShown: false });
     }
@@ -274,6 +314,9 @@ class App extends Component {
   }
 
   toggleSaveMenu() {
+    if (this.state.loginMenuShown) {
+      this.setState({ loginMenuShown: false });
+    }
     if (this.state.settingsMenuShown) {
       this.setState({ settingsMenuShown: false });
     }
@@ -292,6 +335,9 @@ class App extends Component {
   }
 
   toggleLoadMenu() {
+    if (this.state.loginMenuShown) {
+      this.setState({ loginMenuShown: false });
+    }
     if (this.state.settingsMenuShown) {
       this.setState({ settingsMenuShown: false });
     }
@@ -370,6 +416,14 @@ class App extends Component {
     );
   }
 
+  loginMenu() {
+    return (
+      <Login
+        toggleLogin={this.toggleLoginMenu.bind(this)}
+      />
+    );
+  }
+
   saveMenu() {
     return (
       <SaveLoadMenu
@@ -419,6 +473,8 @@ class App extends Component {
         settingsMenuShown={this.state.settingsMenuShown}
         toggleSecretMenu={this.toggleSecretMenu.bind(this)}
         secretMenuShown={this.state.secretMenuShown}
+        toggleLoginMenu={this.toggleLoginMenu.bind(this)}
+        loginMenuShown={this.state.loginShown}
         toggleHistory={this.toggleHistory.bind(this)}
         toggleTextBox={this.toggleTextBox.bind(this)}
         textBoxShown={this.state.textBoxShown}
@@ -481,6 +537,7 @@ class App extends Component {
             {/* GUI menu buttons */}
             {this.state.settingsMenuShown ? this.settingsMenu() : null}
             {this.state.secretMenuShown ? this.secretMenu() : null}
+            {this.state.loginShown && this.loginMenu()}
             {this.state.saveMenuShown ? this.saveMenu() : null}
             {this.state.loadMenuShown ? this.loadMenu() : null}
             {this.state.historyShown ? this.history() : null}
