@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "../styling/secretMenu.css";
+ import "../styling/secretMenu.css";
+
 
 class SecretMenu extends Component {
   constructor(props) {
@@ -99,14 +100,19 @@ class SecretMenu extends Component {
     });
   }
   
-  
 
   toggleCreating() {
     this.setState((prevState) => ({ creating: !prevState.creating }));
   }
 
-  toggleEditing() {
-    this.setState((prevState) => ({ editing: !prevState.editing }));
+  toggleEditing(itemId) {
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+      selectedDrink: {
+        ...prevState.selectedDrink,
+        id: itemId, 
+      },
+    }));
   }
 
   handleChangeNewDrinkCheckbox(event) {
@@ -115,17 +121,6 @@ class SecretMenu extends Component {
       newDrink: { ...prevState.newDrink, [name]: checked },
     }));
   }
-  
-  handleChangeEditedDrink(event) {
-    const { name, value, type, checked } = event.target;
-    const newValue = type === "checkbox" ? checked : value;
-  
-    this.setState((prevState) => ({
-      editedDrink: { ...prevState.editedDrink, [name]: newValue },
-    }));
-  }
-  
-  
 
   handleSubmitNewDrink(event) {
     fetch("http://localhost:8000/api/v1/secret_menu", {
@@ -158,18 +153,17 @@ class SecretMenu extends Component {
         console.log("Error creating menu item:", error);
       });
   }
-  
 
   handleSubmitEditedDrink(event) {
     event.preventDefault();
-    const { itemId } = this.state.editedDrink; 
-    fetch(`http://localhost:8000/api/v1/secret_menu/${itemId}`, {
+    const { id } = this.state.selectedDrink; // Use selectedDrink instead of editedDrink
+    fetch(`http://localhost:8000/api/v1/secret_menu/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state.editedDrink),
-    })    
+      body: JSON.stringify(this.state.selectedDrink), // Use selectedDrink instead of editedDrink
+    })  
       .then((response) => response.json())
       .then((data) => {
         if (data.status.code === 200) {
@@ -202,6 +196,18 @@ class SecretMenu extends Component {
   
     this.setState((prevState) => ({
       newDrink: { ...prevState.newDrink, [name]: newValue },
+      selectedDrink: { ...prevState.selectedDrink, [name]: newValue }, 
+    }));
+  }
+  
+  handleChangeEditedDrink(event) {
+    const { name, value, type, checked } = event.target;
+    const newValue = type === "checkbox" ? checked : value;
+  
+    this.setState((prevState) => ({
+      editedDrink: { ...prevState.editedDrink, [name]: newValue },
+      selectedDrink: { ...prevState.selectedDrink, [name]: newValue }, 
+
     }));
   }
   
@@ -241,7 +247,7 @@ class SecretMenu extends Component {
             <p>Milk: {selectedDrink.milk ? "Yes" : "No"}</p>
             <p>Additional Flavors: {selectedDrink.additional_flavors}</p>
             <p>Taste Profile: {selectedDrink.taste_profile}</p>
-            <button onClick={() => this.toggleEditing()}>Edit</button>
+            <button onClick={() => this.toggleEditing(selectedDrink.id)}>Edit</button>
             <button onClick={() => this.deleteMenuItem(selectedDrink.id)}>Delete</button>
           </div>
         )}
